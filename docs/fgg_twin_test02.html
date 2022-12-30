@@ -95,6 +95,34 @@
                                      市町村コード：${feature.properties["local_government_cd"]}<br />`)
                        .addTo(nextResults);
                     }
+
+                    for await (const feature of iter2) {
+                        // Leaflet styling
+                        const defaultStyle = { 
+                            color: colorScale(feature.properties["land_type"]), 
+                            weight: 1, 
+                            fillOpacity: 0.4,
+                        };
+                        L.geoJSON(feature, {
+                            style: defaultStyle,
+                        }).on({
+                            'mouseover': function(e) {
+                                const layer = e.target;
+                                layer.setStyle({
+                                    weight: 4,
+                                    fillOpacity: 0.8,
+                                });
+                            },
+                            'mouseout': function(e) {
+                                const layer = e.target;
+                                layer.setStyle(defaultStyle);
+                            }
+                        }).bindPopup(`筆ポリゴンID：${feature.properties["polygon_uuid"]}<br />
+                                     地目：${feature.properties["land_type"]}<br />
+                                     市町村コード：${feature.properties["local_government_cd"]}<br />`)
+                       .addTo(nextResults);
+                    }
+
                     rectangle.bringToFront();
                 }
 
