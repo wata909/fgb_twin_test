@@ -61,53 +61,7 @@
                     // Because we specify a bounding box, flatgeobuf will only fetch the relevant subset of data,
                     // rather than the entire file.
                     const iter = flatgeobuf.deserialize('2022_082198.fgb', fgBoundingBox());
-    
-                    const colorScale = ((d) => {
-                        return d > 199  ? '#8b4513' :
-                            d > 99 ? '#EEEE00' :
-                            '#000000'
-                    });
-    
-                    for await (const feature of iter) {
-                        // Leaflet styling
-                        const defaultStyle = { 
-                            color: colorScale(feature.properties["land_type"]), 
-                            weight: 1, 
-                            fillOpacity: 0.4,
-                        };
-                        L.geoJSON(feature, {
-                            style: defaultStyle,
-                        }).on({
-                            'mouseover': function(e) {
-                                const layer = e.target;
-                                layer.setStyle({
-                                    weight: 4,
-                                    fillOpacity: 0.8,
-                                });
-                            },
-                            'mouseout': function(e) {
-                                const layer = e.target;
-                                layer.setStyle(defaultStyle);
-                            }
-                        }).bindPopup(`筆ポリゴンID：${feature.properties["polygon_uuid"]}<br />
-                                     地目：${feature.properties["land_type"]}<br />
-                                     市町村コード：${feature.properties["local_government_cd"]}<br />`)
-                       .addTo(nextResults);
-                    }
-                    rectangle.bringToFront();
-                }
-
-                let previousResults = L.layerGroup().addTo(map);
-                async function updateResults() {
-                    // remove the old results
-                    previousResults.remove();
-                    const nextResults = L.layerGroup().addTo(map);
-                    previousResults = nextResults;
-    
-                    // Use flatgeobuf JavaScript API to iterate features as geojson.
-                    // Because we specify a bounding box, flatgeobuf will only fetch the relevant subset of data,
-                    // rather than the entire file.
-                    const iter = flatgeobuf.deserialize('2022_082198.fgb', fgBoundingBox());
+                    const iter2 = flatgeobuf.deserialize('2022_084433.fgb', fgBoundingBox());
     
                     const colorScale = ((d) => {
                         return d > 199  ? '#8b4513' :
