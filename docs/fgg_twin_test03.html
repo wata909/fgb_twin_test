@@ -32,7 +32,7 @@
     
                     const width = map.distance(bounds.getNorthWest(), bounds.getNorthEast());
                     const height = map.distance(bounds.getNorthWest(), bounds.getSouthWest());
-                    return map.getCenter().toBounds(Math.min(width, height) * 0.8);
+                    return map.getCenter().toBounds(Math.min(width, height) * 1.5);
                 }
     
                 // convert the rect into the format flatgeobuf expects
