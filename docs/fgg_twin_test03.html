@@ -19,7 +19,7 @@
         <script>
             document.addEventListener("DOMContentLoaded", async () => { 
                 // basic OSM Leaflet map
-                let map = L.map('map').setView([36.196512, 140.099738], 15);
+                let map = L.map('map').setView([36.196512, 140.099738], 14);
                 L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
                     maxZoom: 18,
                     minZoom: 10,
@@ -98,8 +98,8 @@
                     const iter2 = flatgeobuf.deserialize('A45-19_08.fgb', fgBoundingBox());
 
                     const colorScale2 = ((d2) => {
-                        return d2 = 'クヌギ'  ? '#8b4513' :
-                            d2 = 'ヒノキ' ? '#EEEE00' :
+                        return d2 == 'クヌギ'  ? '#00FF00' :
+                            d2 == 'ヒノキ' ? '#EEEE00' :
                             '#000000'
                     });
 
@@ -124,7 +124,7 @@
                                 const layer = e.target;
                                 layer.setStyle(defaultStyle);
                             }
-                        }).bindPopup(`小班ID：${feature.properties["A45_00  1"]}<br />
+                        }).bindPopup(`小班ID：${feature.properties["A45_001"]}<br />
                                      樹種１：${feature.properties["A45_015"]}<br />
                                      機能類型：${feature.properties["A45_026"]}<br />`)
                        .addTo(nextResults);
