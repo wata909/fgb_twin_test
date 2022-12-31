@@ -61,7 +61,6 @@
                     // Because we specify a bounding box, flatgeobuf will only fetch the relevant subset of data,
                     // rather than the entire file.
                     const iter = flatgeobuf.deserialize('2022_082201.fgb', fgBoundingBox());
-                    const iter2 = flatgeobuf.deserialize('A45-19_08.fgb', fgBoundingBox());
     
                     const colorScale = ((d) => {
                         return d > 199  ? '#8b4513' :
@@ -96,10 +95,18 @@
                        .addTo(nextResults);
                     }
 
+                    const iter2 = flatgeobuf.deserialize('A45-19_08.fgb', fgBoundingBox());
+
+                    const colorScale2 = ((d2) => {
+                        return d2 = 'クヌギ'  ? '#8b4513' :
+                            d2 = 'ヒノキ' ? '#EEEE00' :
+                            '#000000'
+                    });
+
                     for await (const feature of iter2) {
                         // Leaflet styling
                         const defaultStyle = { 
-                            color: colorScale(feature.properties["land_type"]), 
+                            color: colorScale2(feature.properties["land_type"]), 
                             weight: 1, 
                             fillOpacity: 0.4,
                         };
@@ -117,9 +124,9 @@
                                 const layer = e.target;
                                 layer.setStyle(defaultStyle);
                             }
-                        }).bindPopup(`筆ポリゴンID：${feature.properties["polygon_uuid"]}<br />
-                                     地目：${feature.properties["land_type"]}<br />
-                                     市町村コード：${feature.properties["local_government_cd"]}<br />`)
+                        }).bindPopup(`小班ID：${feature.properties["A45_00  1"]}<br />
+                                     樹種１：${feature.properties["A45_015"]}<br />
+                                     機能類型：${feature.properties["A45_026"]}<br />`)
                        .addTo(nextResults);
                     }
 
