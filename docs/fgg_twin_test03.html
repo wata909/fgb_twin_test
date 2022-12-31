@@ -19,7 +19,7 @@
         <script>
             document.addEventListener("DOMContentLoaded", async () => { 
                 // basic OSM Leaflet map
-                let map = L.map('map').setView([36.196512, 140.099738], 14);
+                let map = L.map('map').setView([36.196512, 140.099738], 16);
                 L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
                     maxZoom: 18,
                     minZoom: 10,
@@ -32,7 +32,7 @@
     
                     const width = map.distance(bounds.getNorthWest(), bounds.getNorthEast());
                     const height = map.distance(bounds.getNorthWest(), bounds.getSouthWest());
-                    return map.getCenter().toBounds(Math.min(width, height) * 1);
+                    return map.getCenter().toBounds(Math.min(width, height) * 2);
                 }
     
                 // convert the rect into the format flatgeobuf expects
