@@ -1,0 +1,1 @@
+ if(  "jyusyu_code_樹種コード"  = NULL, 00, "jyusyu_code_樹種コード")   ||    if(  "rinsyu_code_林種コード"  = NULL, 00, "rinsyu_code_林種コード")
