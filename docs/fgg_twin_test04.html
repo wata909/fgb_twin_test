@@ -141,7 +141,7 @@
                     const iter3 = flatgeobuf.deserialize('W05-08_08-g_Stream.fgb', fgBoundingBox());
 
                     const colorScale3 = ((d3) => {
-                        return d3 == '1' ? '#FFFF00' :
+                        return d3 == '1' ? '#0000FF' :
                         d3 == '2' ? '#FFAA00' :
                         d3 == '3' ? '#AAFF00' :
                         d3 == '4' ? '#55FF00' :
@@ -154,7 +154,7 @@
                         const defaultStyle = { 
                             color: colorScale3(feature.properties["W05_003"]), 
                             weight: 3, 
-                            fillOpacity: 0.4,
+                            Opacity: 0.5,
                         };
                         L.geoJSON(feature, {
                             style: defaultStyle,
