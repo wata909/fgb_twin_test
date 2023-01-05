@@ -9,6 +9,7 @@
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script src="https://unpkg.com/flatgeobuf@3.22.0/dist/flatgeobuf-geojson.min.js"></script>
         <script src="https://unpkg.com/json-formatter-js"></script>
+        <script src="leaflet-hash.js"></script>
     
         <style>
             #map { height: 900px; }
@@ -26,6 +27,9 @@
                     minZoom: 10,
                     attribution: '<a href="https://www.gsi.go.jp/development/ichiran.html#pale">地理院タイル淡色地図</a>&copy; <a href="https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html">国土地理院</a> |                     <a href="https://www.maff.go.jp/j/tokei/porigon/index.html">筆ポリゴンデータ（2022年度公開）</a>&copy; <a href="https://www.maff.go.jp/">農林水産省</a> '
                 }).addTo(map);
+
+                // hash Plugin
+                var hash = new L.Hash(map);
     
                 // For the example, we fix a visible Rect in the middle of the map
                 function getBoundForRect() {
